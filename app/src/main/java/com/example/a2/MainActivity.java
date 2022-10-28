@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
             String action = intent.getAction();
             if (Objects.equals(action, "hotel")) {
                System.out.println("HOTEL");
+                Intent switchActivityIntent = new Intent(context, HotelActivity.class);
+                startActivity(switchActivityIntent);
             } else if (Objects.equals(action, "attract")) {
                 System.out.println("ATTRACT");
             }
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
 
         mReceiver = new MyReciever();
         hFilter = new IntentFilter("hotel");
