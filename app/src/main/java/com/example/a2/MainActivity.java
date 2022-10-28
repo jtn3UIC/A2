@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         mReceiver = new MyReciever();
         hFilter = new IntentFilter("hotel");
         aFilter = new IntentFilter("attract");
-        registerReceiver(mReceiver,hFilter);
-        registerReceiver(mReceiver,aFilter);
+        registerReceiver(mReceiver,hFilter,"edu.uic.cs478.fall22.mp3",null);
+        registerReceiver(mReceiver,aFilter,"edu.uic.cs478.fall22.mp3",null);
 
 
     }
