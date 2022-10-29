@@ -2,17 +2,17 @@
     <string name="app_name">A2</string>
     <string-array name="Titles">
         <item>Warwick Allerton - Chicago</item>
-        <item>King Lear</item>
-        <item>Julius Caesar</item>
-        <item>King Henry VI, Part 2</item>
-        <item>King Richard III</item>
+        <item>Chicago Marriott Downtown Magnificent Mile</item>
+        <item>W Chicago - Lakeshore</item>
+        <item>Trump International Hotel and Tower® Chicago</item>
+        <item>The Allegro Royal Sonesta Hotel Chicago Loop</item>
 
     </string-array>
     <string-array name="HotelLinks">
         <item>https://www.warwickhotels.com/warwick-allerton-chicago/</item>
-        <item>King Lear L</item>
-        <item>Julius Caesar L</item>
-        <item>King Henry VI, Part 2 L</item>
-        <item>King Richard III L</item>
+        <item>https://www.marriott.com/en-us/hotels/chidt-chicago-marriott-downtown-magnificent-mile/overview/</item>
+        <item>https://www.marriott.com/en-us/hotels/chiwh-w-chicago-lakeshore/overview/</item>
+        <item>https://www.trumphotels.com/chicago</item>
+        <item>https://www.sonesta.com/royal-sonesta/il/chicago/allegro-royal-sonesta-hotel-chicago-loop/</item>
     </string-array>
 </resources>
