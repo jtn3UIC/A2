@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">A2</string>
+    <string-array name="Titles">
+        <item>Warwick Allerton - Chicago</item>
+        <item>King Lear</item>
+        <item>Julius Caesar</item>
+        <item>King Henry VI, Part 2</item>
+        <item>King Richard III</item>
+
+    </string-array>
+    <string-array name="HotelLinks">
+        <item>https://www.warwickhotels.com/warwick-allerton-chicago/</item>
+        <item>King Lear L</item>
+        <item>Julius Caesar L</item>
+        <item>King Henry VI, Part 2 L</item>
+        <item>King Richard III L</item>
+    </string-array>
 </resources>
