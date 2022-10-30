@@ -24,10 +24,10 @@
         <item>TILT</item>
     </string-array>
     <string-array name="AttractLinks">
-        <item>https://en.wikipedia.org/wiki/Lincoln_Park_Zoo</item>
-        <item>https://en.wikipedia.org/wiki/Navy_Pier</item>
-        <item>https://en.wikipedia.org/wiki/Museum_of_Science_and_Industry_(Chicago)</item>
-        <item>https://en.wikipedia.org/wiki/Art_Institute_of_Chicago</item>
-        <item>https://en.wikipedia.org/wiki/John_Hancock_Center</item>
+        <item>https://www.lpzoo.org/</item>
+        <item>https://navypier.org/</item>
+        <item>https://www.msichicago.org/</item>
+        <item>https://www.artic.edu/</item>
+        <item>https://360chicago.com/tilt</item>
     </string-array>
 </resources>

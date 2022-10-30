@@ -16,6 +16,7 @@ public class AttractFrag2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setRetainInstance(true);
         mQuoteArray = getResources().getStringArray(R.array.AttractLinks);
         View v = inflater.inflate(R.layout.web, container, false);
         mWebView = (WebView) v.findViewById(R.id.webPage);

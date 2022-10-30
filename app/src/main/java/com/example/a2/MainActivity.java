@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(switchActivityIntent);
             } else if (Objects.equals(action, "attract")) {
                 System.out.println("ATTRACT");
+                Intent switchActivityIntent = new Intent(context, AttractActivity.class);
+                startActivity(switchActivityIntent);
             }
         }
     }

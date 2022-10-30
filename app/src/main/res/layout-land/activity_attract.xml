@@ -12,6 +12,7 @@
         android:layout_width="0px"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:name="com.example.a2.AttractFrag1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
     <FrameLayout android:id="@+id/webFrag"
