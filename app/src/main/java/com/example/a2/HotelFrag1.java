@@ -29,8 +29,8 @@ public class HotelFrag1 extends ListFragment {
         // Indicates the selected item has been checked
         getListView().setItemChecked(pos, true);
         mModel.selectItem(pos);
+        act = (HotelActivity) getActivity();
         act.select(pos);
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

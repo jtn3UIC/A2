@@ -33,96 +33,75 @@ public class HotelActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
    // @SuppressLint("StaticFieldLeak")
-    HotelFrag1 frag1 = new HotelFrag1();
+    HotelFrag1 frag1;// = new HotelFrag1();
 
-    HotelFrag2 frag2 = new HotelFrag2();
+    HotelFrag2 frag2;// = new HotelFrag2();
     FragmentContainerView view1;
     FrameLayout view2;
-    private static final int MATCH_PARENT = LinearLayout.LayoutParams.MATCH_PARENT;
+    static int Parent = LinearLayout.LayoutParams.MATCH_PARENT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        frag1.act = this;
+        //frag1.act = this;
         setContentView(R.layout.activity_hotel);
-        int orientation = getResources().getConfiguration().orientation;
-
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
-        } else {
-
-        }
         mTitleArray = getResources().getStringArray(R.array.Titles);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Hotels in Chicago");
         view1 =  (FragmentContainerView) findViewById(R.id.titles);
         view2 = (FrameLayout) findViewById(R.id.webFrag);
+        fragmentManager = getSupportFragmentManager();//FragmentManager();
         frag1 = (HotelFrag1) fragmentManager.findFragmentByTag("HotelFrag1");
         frag2 = (HotelFrag2) fragmentManager.findFragmentByTag("HotelFrag2");
         FragmentTransaction mTransaction = fragmentManager.beginTransaction();
-        if (frag1 == null){
+        if (frag1 == null) {
             frag1 = new HotelFrag1();
-            mTransaction.replace(R.id.titles, frag1,"HotelFrag1");
-            mTransaction.commit();
+        }
+        if (frag2 == null) {
+            frag2 = new HotelFrag2();
         } else {
-            mTransaction.replace(R.id.titles, frag1, "HotelFrag1");
-            mTransaction.commit();
-            if (frag2 == null) {
-                frag2 = new HotelFrag2();
-            } else {
-                if (!frag2.isAdded()) {
-                    mTransaction.replace(R.id.webFrag, frag2, "HotelFrag2");
-                    mTransaction.addToBackStack(null);
-                    mTransaction.commit();
-                    fragmentManager.executePendingTransactions();
-
-                }
+            if (frag2.isAdded() == false) {
+                mTransaction.replace(R.id.webFrag, frag2, "HotelFrag2").addToBackStack(null).commit();
             }
         }
-        if(frag2 == null){
-            frag2 = new HotelFrag2();
-        }
+        mTransaction.replace(R.id.titles, frag1,"HotelFrag1").commit();
+        fragmentManager.executePendingTransactions();
+
+        changeLayout();
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             public void onBackStackChanged() {
-                setLayout();
+                changeLayout();
             }
         });
-
     }
-    private void setLayout() {
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+    void changeLayout() {
+        int orient = getResources().getConfiguration().orientation;
+        if(orient== Configuration.ORIENTATION_PORTRAIT){
             if (!frag2.isAdded()) {
-                view1.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
-                view2.setLayoutParams(new LinearLayout.LayoutParams(0, MATCH_PARENT));
+                view1.setLayoutParams(new LinearLayout.LayoutParams(Parent, Parent));
+                view2.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
+            } else {
+                view1.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
+                view2.setLayoutParams(new LinearLayout.LayoutParams(Parent, Parent));
             }
-            else {
-                view1.setLayoutParams(new LinearLayout.LayoutParams(0, MATCH_PARENT));
-                view2.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
-            }
-        }
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        } else {
             if (!frag2.isAdded()) {
-                view1.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
-                view2.setLayoutParams(new LinearLayout.LayoutParams(0,MATCH_PARENT));
-            }
-            else {
-                view1.setLayoutParams(new LinearLayout.LayoutParams(0,MATCH_PARENT, 1f));
-                view2.setLayoutParams(new LinearLayout.LayoutParams(0,MATCH_PARENT, 2f));
+                view1.setLayoutParams(new LinearLayout.LayoutParams(Parent, Parent));
+                view2.setLayoutParams(new LinearLayout.LayoutParams(0,Parent));
+            } else {
+                view1.setLayoutParams(new LinearLayout.LayoutParams(0,Parent, 1));
+                view2.setLayoutParams(new LinearLayout.LayoutParams(0,Parent, 2));
             }
         }
     }
-    public void select(int index) { //EDIT EDIT EDITEEEEEEEEEEEEEEEEEEEE
-        //EEEEEEEEEEEEEEEEE
-        if (view2 == null || !frag2.isAdded()) {
+    public void select(int index) {
+        if (!frag2.isAdded()) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.webFrag, frag2,"HotelFrag2");
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.replace(R.id.webFrag, frag2,"HotelFrag2").addToBackStack(null).commit();
             fragmentManager.executePendingTransactions();
         }
         frag2.showWebView(index);
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
