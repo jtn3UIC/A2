@@ -14,36 +14,37 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 public class HotelFrag2 extends Fragment {
-    private String url;
+    private Integer index;
     WebView mWebView;
-    public HotelFrag2(String url) {
-        this.url = url;
-    }
-    public HotelFrag2() {
-        url = "https://www.warwickhotels.com/warwick-allerton-chicago/";
-    }
+    static String[] mQuoteArray;
+    //public static final String TAG = "HotelFrag2";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Log.i(TAG, getClass().getSimpleName() + ":entered onCreateView()");
-        //return super.onCreateView(inflater, container, savedInstanceState);
+        mQuoteArray = getResources().getStringArray(R.array.HotelLinks);
         View v = inflater.inflate(R.layout.web, container, false);
         mWebView = (WebView) v.findViewById(R.id.webPage);
-        //url = "10.1.1.8/dona1clickmobile/index.php";
+
 
         mWebView.getSettings().setJavaScriptEnabled(true);
-        //mWebView.setWebViewClient(new SwAWebClient());
-        mWebView.loadUrl(url);
 
+        //mWebView.loadUrl(url);
 
-        HotelActivity.hurl = url;
         return v;
+    }
+    public void showWebView(int index) {
+        if (index >= mQuoteArray.length) {
+            return;
+        }
+        this.index = index;
+        mWebView.loadUrl(mQuoteArray[index]);
     }
     @Override
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-
-
+        if (index != null) {
+            showWebView(index);
+        }
     }
     @Override
     public void onPause() {

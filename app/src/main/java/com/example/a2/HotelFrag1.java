@@ -22,29 +22,15 @@ public class HotelFrag1 extends ListFragment {
     private static final String TAG = "HotelFrag1";
     private ListViewModel mModel;
     private String[] links;
-
+    public HotelActivity act;
     @Override
     public void onListItemClick(ListView l, View v, int pos, long id) {
 
         // Indicates the selected item has been checked
         getListView().setItemChecked(pos, true);
-
         mModel.selectItem(pos);
-        int orientation = getResources().getConfiguration().orientation;
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        act.select(pos);
 
-            Fragment nextFrag = new HotelFrag2(links[pos]);
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.webFrag, nextFrag, "findThisFragment")
-                    .addToBackStack(null)
-                    .commit();
-        } else {
-            Fragment nextFrag = new HotelFrag2(links[pos]);
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.titles, nextFrag, "findThisFragment")
-                    .addToBackStack(null)
-                    .commit();
-        }
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,14 +55,6 @@ public class HotelFrag1 extends ListFragment {
         setListAdapter(new ArrayAdapter<String>(getActivity(),
                 R.layout.hotel_item, HotelActivity.mTitleArray));
         links = getResources().getStringArray(R.array.HotelLinks);
-        int orientation = getResources().getConfiguration().orientation;
 
-        if (HotelActivity.hurl != null && orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Fragment nextFrag = new HotelFrag2((String) savedInstanceState.getCharSequence("url"));
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.webFrag, nextFrag, "findThisFragment")
-                    .addToBackStack(null)
-                    .commit();
-        }
     }
 }
