@@ -120,7 +120,4 @@ public class HotelActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-
 }
