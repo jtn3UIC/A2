@@ -61,7 +61,7 @@ public class HotelActivity extends AppCompatActivity {
         if (frag2 == null) {
             frag2 = new HotelFrag2();
         } else {
-            if (frag2.isAdded() == false) {
+            if (!frag2.isAdded()) {
                 mTransaction.replace(R.id.webFrag, frag2, "HotelFrag2").addToBackStack(null).commit();
             }
         }
@@ -88,7 +88,7 @@ public class HotelActivity extends AppCompatActivity {
         } else {
             if (!frag2.isAdded()) {
                 view1.setLayoutParams(new LinearLayout.LayoutParams(Parent, Parent));
-                view2.setLayoutParams(new LinearLayout.LayoutParams(0,Parent));
+                view2.setLayoutParams(new LinearLayout.LayoutParams(0,0));
             } else {
                 view1.setLayoutParams(new LinearLayout.LayoutParams(0,Parent, 1));
                 view2.setLayoutParams(new LinearLayout.LayoutParams(0,Parent, 2));
