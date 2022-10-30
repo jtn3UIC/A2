@@ -15,4 +15,19 @@
         <item>https://www.trumphotels.com/chicago</item>
         <item>https://www.sonesta.com/royal-sonesta/il/chicago/allegro-royal-sonesta-hotel-chicago-loop/</item>
     </string-array>
+
+    <string-array name="Attract">
+        <item>Lincoln Park Zoo</item>
+        <item>Navy Pier</item>
+        <item>Museum of Science and Industry</item>
+        <item>Art Institute</item>
+        <item>TILT</item>
+    </string-array>
+    <string-array name="AttractLinks">
+        <item>https://en.wikipedia.org/wiki/Lincoln_Park_Zoo</item>
+        <item>https://en.wikipedia.org/wiki/Navy_Pier</item>
+        <item>https://en.wikipedia.org/wiki/Museum_of_Science_and_Industry_(Chicago)</item>
+        <item>https://en.wikipedia.org/wiki/Art_Institute_of_Chicago</item>
+        <item>https://en.wikipedia.org/wiki/John_Hancock_Center</item>
+    </string-array>
 </resources>

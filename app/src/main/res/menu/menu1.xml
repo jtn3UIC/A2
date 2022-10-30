@@ -6,8 +6,8 @@
         <!-- "Mark Favorite", should appear as action button if possible -->
         <item
             android:id="@+id/attract"
-            android:title="Attractions"
-            app:showAsAction="ifRoom"/>
+            android:title="Switch Activities"
+            app:showAsAction="ifRoom" />
 
 
 </menu>

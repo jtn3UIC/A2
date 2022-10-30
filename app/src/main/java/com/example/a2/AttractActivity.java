@@ -1,42 +1,28 @@
 package com.example.a2;
 
-import android.annotation.SuppressLint;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import  androidx.fragment.*;
-
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-
-public class HotelActivity extends AppCompatActivity {
+public class AttractActivity  extends AppCompatActivity {
     public static String hurl = null;
     static String[] mTitleArray;
 
     FragmentManager fragmentManager;
-   // @SuppressLint("StaticFieldLeak")
-    HotelFrag1 frag1;
-    HotelFrag2 frag2;
+    // @SuppressLint("StaticFieldLeak")
+    AttractFrag1 frag1;
+    AttractFrag2 frag2;
     FragmentContainerView view1;
     FrameLayout view2;
     static int Parent = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -45,30 +31,29 @@ public class HotelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //frag1.act = this;
-        setContentView(R.layout.activity_hotel);
-        mTitleArray = getResources().getStringArray(R.array.Titles);
+        setContentView(R.layout.activity_attract);
+        mTitleArray = getResources().getStringArray(R.array.Attract);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Hotels in Chicago");
+        actionBar.setTitle("Attractions in Chicago");
         view1 =  (FragmentContainerView) findViewById(R.id.titles);
         view2 = (FrameLayout) findViewById(R.id.webFrag);
         fragmentManager = getSupportFragmentManager();//FragmentManager();
-        frag1 = (HotelFrag1) fragmentManager.findFragmentByTag("HotelFrag1");
-        frag2 = (HotelFrag2) fragmentManager.findFragmentByTag("HotelFrag2");
+        frag1 = (AttractFrag1) fragmentManager.findFragmentByTag("AttractFrag1");
+        frag2 = (AttractFrag2) fragmentManager.findFragmentByTag("AttractFrag2");
         FragmentTransaction mTransaction = fragmentManager.beginTransaction();
         if (frag1 == null) {
-            frag1 = new HotelFrag1();
+            frag1 = new AttractFrag1();
         }
         if (frag2 == null) {
-            frag2 = new HotelFrag2();
+            frag2 = new AttractFrag2();
         } else {
             if (!frag2.isAdded()) {
-                mTransaction.replace(R.id.webFrag, frag2, "HotelFrag2").addToBackStack(null).commit();
+                mTransaction.replace(R.id.webFrag, frag2, "AttractFrag2").addToBackStack(null).commit();
             }
         }
-        mTransaction.replace(R.id.titles, frag1,"HotelFrag1").commit();
+        mTransaction.replace(R.id.titles, frag1,"AttractFrag1").commit();
         fragmentManager.executePendingTransactions();
-
         changeLayout();
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             public void onBackStackChanged() {
@@ -99,7 +84,7 @@ public class HotelActivity extends AppCompatActivity {
     public void select(int index) {
         if (!frag2.isAdded()) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.webFrag, frag2,"HotelFrag2").addToBackStack(null).commit();
+            fragmentTransaction.replace(R.id.webFrag, frag2,"AttractFrag2").addToBackStack(null).commit();
             fragmentManager.executePendingTransactions();
         }
         frag2.showWebView(index);
@@ -112,10 +97,9 @@ public class HotelActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.attract:
-                Intent myIntent = new Intent(this, AttractActivity.class);
+                Intent myIntent = new Intent(this, HotelActivity.class);
                 startActivity(myIntent);
             default:
                 return super.onOptionsItemSelected(item);
