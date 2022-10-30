@@ -19,6 +19,9 @@ public class HotelFrag2 extends Fragment {
     public HotelFrag2(String url) {
         this.url = url;
     }
+    public HotelFrag2() {
+        url = "https://www.warwickhotels.com/warwick-allerton-chicago/";
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class HotelFrag2 extends Fragment {
         //mWebView.setWebViewClient(new SwAWebClient());
         mWebView.loadUrl(url);
 
+
+        HotelActivity.hurl = url;
         return v;
     }
     @Override
@@ -39,5 +44,10 @@ public class HotelFrag2 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        //save.putCharSequence("url",null);
     }
 }

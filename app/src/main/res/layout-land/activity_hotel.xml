@@ -15,5 +15,10 @@
         android:name="com.example.a2.HotelFrag1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
+    <FrameLayout android:id="@+id/webFrag"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        />
 
 </LinearLayout>
